@@ -34,19 +34,48 @@ Full site built: Home, About, Listings, both cabin detail pages, Contact,
 FAQ, Privacy Policy, Cancellation Policy (placeholder), custom 404,
 sitemap.xml, favicon. Owner reviews and gives feedback from here.
 
+Hospitable booking widgets are live on both cabin detail pages (real embed
+scripts from `cdn.hsptb.com`, not placeholders). The widget snippets
+themselves carry no cancellation/refund policy text — that has to come
+from the owner's Hospitable dashboard directly, so don't infer or fabricate
+policy copy from the widget code.
+
+Each cabin detail page has a "Where You'll Be" section with a Leaflet
+(OpenStreetMap, no API key) map showing a shaded circle, not a pin, over
+the cabin's general area — this exists specifically so the real address
+never has to appear on the page while still giving guests a genuinely
+accurate sense of location. The circle's center coordinates must never be
+derived by sending the real street address (from `/reference`) to an
+external geocoding service — that's an explicit privacy line the owner
+asked to hold. Get coordinates only from the owner directly (they can look
+them up in Maps and hand back just the numbers), never by geocoding the
+address text. Until then, `data-map-lat`/`data-map-lng` are marked
+`PENDING` in both cabin pages.
+
+Photo galleries on both cabin detail pages include every real photo of the
+cabin from `/images/{cabin}` — deliberately excluding the floor plan PDF
+(different asset type) and the handful of area attraction stock photos
+(Dollywood, GSMNP sign, Hatfields & McCoys, Roaring Fork, The Island,
+Wonderworks) that are duplicated identically across both cabins' folders —
+those depict the region, not the property, so including them in a cabin's
+own gallery would misrepresent what guests are booking.
+
 Remaining placeholders, not blockers, just waiting on real values:
-- Hospitable booking widget embed codes (one per cabin, clearly marked
-  `<!-- HOSPITABLE WIDGET: {cabin} -->` divs in each detail page)
+- Map center coordinates per cabin (see above — ask the owner directly)
 - Formspree form endpoint on Contact page (`YOUR_FORM_ID` placeholder)
 - Actual cancellation/refund policy text (placeholder section on both
-  cabin pages plus its own page)
+  cabin pages plus its own page) — must come from the owner's Hospitable
+  dashboard, not the widget embed code
 - Real domain for `sitemap.xml` and the schema `image` URLs
   (`REPLACE-WITH-LIVE-DOMAIN` placeholders)
 
 ## Stack and hosting constraints
 
 - Plain HTML/CSS, no framework, no build step, no npm.
-- Vanilla JS only where needed (image carousel) — no external JS libraries.
+- Vanilla JS for site behavior (carousel, mobile nav) — no external JS
+  libraries there. The one exception is Leaflet (loaded via CDN, no API
+  key) for the location map circle on cabin detail pages, since that needs
+  real map tiles; don't add other external JS dependencies beyond that.
 - Netlify hosting, already connected, auto-deploys on push to `main`.
 - No backend. Contact form uses Formspree free tier (placeholder endpoint
   until the owner sets up a dedicated business email).
@@ -55,9 +84,9 @@ Remaining placeholders, not blockers, just waiting on real values:
 ## Property management system (PMS)
 
 Currently **Hospitable** (Professional plan + Direct Premium). Each cabin's
-detail page gets a Hospitable embeddable booking widget — until the owner
-supplies the real embed code, use a **clearly marked placeholder div** per
-cabin page (e.g. `<!-- HOSPITABLE WIDGET: bearadise --><div class="widget-placeholder" data-cabin="bearadise">...</div>`).
+detail page has its real Hospitable embeddable booking widget (a `<script>`
+loader tag with `data-site-uuid` and `data-property-id`), marked with a
+`<!-- HOSPITABLE WIDGET: {cabin} -->` comment for easy identification.
 
 The owner may switch PMS providers in the future. Keep widget embeds
 isolated (one container div per cabin, not tangled into layout CSS) so a

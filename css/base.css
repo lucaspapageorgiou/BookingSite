@@ -329,12 +329,25 @@ section {
   backdrop-filter: blur(3px);
 }
 
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(46, 32, 24, 0.45) 0%, rgba(46, 32, 24, 0.55) 100%);
+  pointer-events: none;
+}
+
 .hero-copy {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: #fbf6ea;
-  padding: 2.4rem 1.25rem 1.6rem;
+  padding: 1.5rem;
   max-width: 720px;
   margin: 0 auto;
 }
@@ -603,9 +616,11 @@ section {
 .cabin-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(46, 32, 24, 0) 40%, rgba(46, 32, 24, 0.65) 100%);
+  background: linear-gradient(180deg, rgba(46, 32, 24, 0.4) 0%, rgba(46, 32, 24, 0.5) 100%);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 1.5rem;
 }
 
@@ -615,12 +630,14 @@ section {
 
 .cabin-hero-overlay h1 {
   color: #fbf6ea;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
 }
 
-.cabin-hero-overlay p {
+.cabin-hero-overlay .facts {
   color: #ebe4d3;
   margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
 }
 
 .gallery-grid {
@@ -676,10 +693,11 @@ section {
 
 .widget-panel {
   background: var(--paper);
-  border: 2px dashed var(--line);
+  border: 1px solid var(--line);
   border-radius: 14px;
   padding: 2rem;
   text-align: center;
+  box-shadow: var(--shadow-soft);
 }
 
 .widget-placeholder {
@@ -688,6 +706,27 @@ section {
   padding: 2.5rem 1rem;
   color: var(--stone);
   font-size: 0.95rem;
+}
+
+/* ---------- location map ---------- */
+.map-panel {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+.map-panel .leaflet-container {
+  height: 320px;
+  width: 100%;
+  font-family: var(--font-body);
+  background: var(--cream);
+}
+
+.map-note {
+  font-size: 0.85rem;
+  color: var(--stone);
+  margin-top: 0.75rem;
 }
 
 .secure-note {

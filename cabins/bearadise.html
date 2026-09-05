@@ -8,6 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/bearadise.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -64,7 +65,7 @@
     <div class="cabin-hero-overlay">
       <div class="container">
         <h1>Bearadise</h1>
-        <p>Pigeon Forge, Tennessee &middot; sleeps 8</p>
+        <p class="facts">8 guests &bull; 3 bedrooms &bull; 3 bathrooms</p>
       </div>
     </div>
   </div>
@@ -95,12 +96,36 @@
       <h2 style="margin-top:2.5rem;">Photo Gallery</h2>
       <div class="gallery-grid">
         <img src="../images/bearadise/DJI_0617 (1).jpg" alt="Aerial twilight view of Bearadise with its wraparound porch lit by warm string lights" loading="lazy">
+        <img src="../images/bearadise/ChatGPT Image May 3, 2026 at 06_09_44 PM.jpg" alt="Twilight exterior of Bearadise showing its green metal roof, dormer windows, and covered porch" loading="lazy">
+        <img src="../images/bearadise/fa075e8a-2abd-446f-a78a-18e22fd3cd8b.png.jpeg" alt="Covered upper deck at Bearadise with patio seating, a glass top table, and log railing strung with lights" loading="lazy">
+        <img src="../images/bearadise/1512GTp1-5 (2).jpeg" alt="Elevated view down into Bearadise's open concept kitchen, dining, and living area" loading="lazy">
         <img src="../images/bearadise/DSC_0922.jpg" alt="Bearadise living room with a stone fireplace, a mounted TV, and a hand carved A warm welcome to all sign on the mantel" loading="lazy">
-        <img src="../images/bearadise/DSC_0989.jpg" alt="Bearadise game room with a pool table, wet bar, and wall of vintage beer signs" loading="lazy">
-        <img src="../images/bearadise/DSC_1013.jpg" alt="Board games including Monopoly, Taboo, Candy Land, and Uno set out on the game room table" loading="lazy">
+        <img src="../images/bearadise/DSC_0934.jpg" alt="Bearadise living room with two gray sofas facing the stone fireplace under a vaulted wood ceiling" loading="lazy">
+        <img src="../images/bearadise/DSC_0916.jpg" alt="Bearadise sitting area with framed wildlife art, a gray sofa, and a Welcome to our Cabin sign" loading="lazy">
+        <img src="../images/bearadise/DSC_0956.jpg" alt="Bearadise living room with log stairs to the loft, a stone fireplace, and a Cabin Rules sign" loading="lazy">
+        <img src="../images/bearadise/1512GTp1-4 (1).jpeg" alt="Bearadise kitchen with stainless steel appliances, granite counters, and a rustic EAT sign" loading="lazy">
+        <img src="../images/bearadise/DSC_0940.jpg" alt="Coffee station in the Bearadise kitchen with a drip coffee maker and two mugs" loading="lazy">
+        <img src="../images/bearadise/DSC_0898 (1).jpg" alt="Bearadise game room with a pool table, cue rack, and a wall of vintage beer signs" loading="lazy">
+        <img src="../images/bearadise/DSC_0989.jpg" alt="Bearadise game room pool table set up for a game, beside the wet bar" loading="lazy">
+        <img src="../images/bearadise/DSC_1040 (1).jpg" alt="Wide view of Bearadise's game room with the pool table and full wet bar" loading="lazy">
+        <img src="../images/bearadise/DSC_1031.jpg" alt="Bearadise wet bar with vintage beer signage, a sink, and a mounted TV" loading="lazy">
+        <img src="../images/bearadise/DSC_1013.jpg" alt="Board games including Monopoly, Taboo, Candy Land, and Uno set out in Bearadise's game room" loading="lazy">
+        <img src="../images/bearadise/DSC_0925.jpg" alt="Bunk room at Bearadise with Tennessee themed prints and a table set up for board games" loading="lazy">
+        <img src="../images/bearadise/DSC_0907.jpg" alt="Bearadise bunk room with a sleeper sofa and a full over full bunk bed" loading="lazy">
+        <img src="../images/bearadise/DSC_1016.jpg" alt="Bunk room dresser at Bearadise beneath a Cabin Fever sign, with bunk beds reflected in the mirror" loading="lazy">
+        <img src="../images/bearadise/DSC_3138.jpg" alt="Wider view of the Bearadise bunk room, with the sleeper sofa, bunk beds, and dresser all in frame" loading="lazy">
+        <img src="../images/bearadise/DSC_1004 (1).jpg" alt="Bearadise bedroom with a vaulted ceiling, log bed frame, and navy floral bedding" loading="lazy">
+        <img src="../images/bearadise/DSC_0980 (1).jpg" alt="Primary bedroom at Bearadise with a log bed frame and a view through to the jacuzzi tub" loading="lazy">
+        <img src="../images/bearadise/DSC_0986 (1).jpg" alt="Bearadise bedroom with a log bed frame, navy floral bedding, and a Life is Better at the Cabin sign" loading="lazy">
         <img src="../images/bearadise/DSC_0971.jpg" alt="Bearadise bedroom with a queen bed in navy floral bedding and a ceiling fan overhead" loading="lazy">
-        <img src="../images/bearadise/DSC_0907.jpg" alt="Bearadise bunk room with a sleeper sofa, board games, and a full over full bunk bed" loading="lazy">
         <img src="../images/bearadise/DSC_0953.jpg" alt="Primary bathroom at Bearadise with a jacuzzi soaking tub beneath a window and a separate glass shower" loading="lazy">
+        <img src="../images/bearadise/DSC_0998.jpg" alt="Bearadise bathroom with a step in shower, toilet, and vanity" loading="lazy">
+        <img src="../images/bearadise/DSC_0913.jpg" alt="Bathroom vanity at Bearadise with wood paneled cabinetry" loading="lazy">
+        <img src="../images/bearadise/DSC_1001.jpg" alt="Bearadise bathroom vanity beneath a Bathroom Rules chalkboard sign" loading="lazy">
+        <img src="../images/bearadise/DSC_0910.jpg" alt="Half bathroom at Bearadise with a glass shower stall and a rustic outhouse print" loading="lazy">
+        <img src="../images/bearadise/Screen Shot 2025-03-01 at 10.11.59 AM.jpg" alt="Laundry closet at Bearadise with a stacked washer and dryer and a hanging ironing board" loading="lazy">
+        <img src="../images/bearadise/rocking chairs top deck.jpg" alt="Rocking chairs on Bearadise's upper deck, strung with string lights at dusk" loading="lazy">
+        <img src="../images/bearadise/hot tub summer waves.jpg" alt="Bearadise's private hot tub in daylight, screened by a green privacy trellis" loading="lazy">
         <img src="../images/bearadise/hot tub night.jpg" alt="Private hot tub on the Bearadise deck lit with warm string lights at dusk" loading="lazy">
         <img src="../images/bearadise/picnic table top deck.jpg" alt="Picnic table on Bearadise's upper deck strung with string lights among the trees" loading="lazy">
       </div>
@@ -158,6 +183,21 @@
     </div>
   </section>
 
+  <section aria-labelledby="location-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Where You'll Be</p>
+        <h2 id="location-heading">General Area</h2>
+        <p>To protect our guests' privacy, we don't publish the exact address here. This shows the general area, the exact address and door code are sent 3 days before check in.</p>
+      </div>
+      <div class="map-panel">
+        <!-- MAP: bearadise, approximate location circle, not an exact pin -->
+        <div data-map-lat="PENDING" data-map-lng="PENDING" data-map-radius="800"></div>
+      </div>
+      <p class="map-note">Exact address shared with confirmed guests only.</p>
+    </div>
+  </section>
+
   <section class="section-cream" id="book" aria-labelledby="book-heading">
     <div class="container">
       <div class="section-heading">
@@ -166,10 +206,12 @@
       </div>
       <div class="widget-panel">
         <!-- HOSPITABLE WIDGET: bearadise -->
-        <!-- Replace this placeholder div with Bearadise's real Hospitable embed code once provided. -->
-        <div class="widget-placeholder" data-cabin="bearadise">
-          Hospitable booking widget for Bearadise goes here.
-        </div>
+        <script
+          src="https://cdn.hsptb.com/direct-booking-widget/widget-loader.prod.js"
+          data-site-uuid="a2ad2a0a-7aad-4594-83a1-02a804fbd3c7"
+          data-property-id="1364686"
+          data-theme="multi">
+        </script>
         <p class="secure-note">&#128274; Secure checkout, handled directly through our booking platform</p>
       </div>
     </div>
@@ -219,6 +261,8 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="../js/nav.js"></script>
+<script src="../js/location-map.js"></script>
 </body>
 </html>

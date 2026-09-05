@@ -8,6 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/rustic-retreat.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,7 +64,7 @@
     <div class="cabin-hero-overlay">
       <div class="container">
         <h1>Rustic Retreat</h1>
-        <p>Pigeon Forge, Tennessee &middot; sleeps 6</p>
+        <p class="facts">6 guests &bull; 3 bedrooms &bull; 2 bathrooms</p>
       </div>
     </div>
   </div>
@@ -92,14 +93,33 @@
 
       <h2 style="margin-top:2.5rem;">Photo Gallery</h2>
       <div class="gallery-grid">
+        <img src="../images/rustic-retreat/winner.jpg" alt="Twilight aerial view of Rustic Retreat's A frame exterior and wraparound deck" loading="lazy">
         <img src="../images/rustic-retreat/Cabin0001.jpg" alt="Rustic Retreat's great room with a spiral staircase, dining table, and blue-gray sectional beneath a soaring wood ceiling" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin0005.jpg" alt="Dining nook at Rustic Retreat set with teal dishware, candlesticks, and a wall of windows" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin0009.jpg" alt="Rustic Retreat's living and dining area viewed from above, with the spiral staircase to the loft" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin0014.jpg" alt="Rustic Retreat bathroom with a seafoam shower curtain and a wood framed vanity mirror" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin0016.jpg" alt="Loft nook at Rustic Retreat with tool storage and a small desk" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin0022.jpg" alt="Loft office nook at Rustic Retreat with a desk and armchair overlooking the treetops" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin005.jpg" alt="Patio table on Rustic Retreat's deck strung with string lights" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin006.jpg" alt="Private hot tub and patio table on Rustic Retreat's deck, surrounded by summer greenery" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin008.jpg" alt="Loft workspace at Rustic Retreat overlooking the deck and hot tub below" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin010.jpg" alt="Rustic Retreat's deck by day with the hot tub and patio seating" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin043.jpg" alt="Rustic Retreat's vaulted living room at dusk, with a stone fireplace and a wrought iron chandelier" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin044.jpg" alt="Rustic Retreat living room at night with a blue-gray sectional and view up the spiral staircase to the loft" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin048.jpg" alt="Rustic Retreat's hot tub glowing at dusk with string lights strung through the trees" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin050.jpg" alt="Rustic Retreat's screened deck hot tub glowing at night with the kitchen and living room visible through the windows" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin051.jpg" alt="Rustic Retreat's exterior deck stairs lit at night" loading="lazy">
+        <img src="../images/rustic-retreat/Cabin052.jpg" alt="Rustic Retreat's exterior at night, with the hot tub deck visible through the trees" loading="lazy">
+        <img src="../images/rustic-retreat/1357PTp1-1.jpeg" alt="Rustic Retreat's kitchen with green tile backsplash and stainless appliances" loading="lazy">
+        <img src="../images/rustic-retreat/1357PTp1-2.jpeg" alt="Rustic Retreat's kitchen corner with a herringbone green tile backsplash and a farmhouse hutch" loading="lazy">
         <img src="../images/rustic-retreat/1357PTp1-3.jpeg" alt="Stone chimney and fireplace beside the kitchen's green tile backsplash and stainless refrigerator" loading="lazy">
         <img src="../images/rustic-retreat/1357PTp1-4.jpeg" alt="Primary bedroom at Rustic Retreat with a queen bed in teal floral bedding and matching bedside lamps" loading="lazy">
-        <img src="../images/rustic-retreat/Cabin0014.jpg" alt="Rustic Retreat bathroom with a seafoam shower curtain and a wood framed vanity mirror" loading="lazy">
-        <img src="../images/rustic-retreat/Cabin0022.jpg" alt="Loft office nook at Rustic Retreat with a desk and armchair overlooking the treetops" loading="lazy">
-        <img src="../images/rustic-retreat/Cabin044.jpg" alt="Rustic Retreat living room at night with a blue-gray sectional and view up the spiral staircase to the loft" loading="lazy">
-        <img src="../images/rustic-retreat/Cabin006.jpg" alt="Private hot tub and patio table on Rustic Retreat's deck, surrounded by summer greenery" loading="lazy">
-        <img src="../images/rustic-retreat/Cabin048.jpg" alt="Rustic Retreat's hot tub glowing at dusk with string lights strung through the trees" loading="lazy">
+        <img src="../images/rustic-retreat/1357PTp1-5.jpeg" alt="Primary bedroom at Rustic Retreat with a mounted TV and a view toward the spiral staircase" loading="lazy">
+        <img src="../images/rustic-retreat/1357PTp1-6.jpeg" alt="Primary bedroom at Rustic Retreat with a stone accent pillar and access to the private bathroom and deck" loading="lazy">
+        <img src="../images/rustic-retreat/1357PTp1-7.jpeg" alt="Loft bedroom at Rustic Retreat tucked under the eaves with floral bedding" loading="lazy">
+        <img src="../images/rustic-retreat/1357PTp1-8.jpeg" alt="Second loft bedroom at Rustic Retreat with a pendant light and mounted TV" loading="lazy">
+        <img src="../images/rustic-retreat/1357PTp1-9.jpeg" alt="Bedroom nook at Rustic Retreat with soft bedding and a mounted TV" loading="lazy">
+        <img src="../images/rustic-retreat/1357PTp1-10.jpeg" alt="Bedroom corner at Rustic Retreat with a dresser and garden view window" loading="lazy">
       </div>
     </div>
   </section>
@@ -158,6 +178,21 @@
     </div>
   </section>
 
+  <section aria-labelledby="location-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Where You'll Be</p>
+        <h2 id="location-heading">General Area</h2>
+        <p>To protect our guests' privacy, we don't publish the exact address here. This shows the general area, the exact address and door code are sent 3 days before check in.</p>
+      </div>
+      <div class="map-panel">
+        <!-- MAP: rustic-retreat, approximate location circle, not an exact pin -->
+        <div data-map-lat="PENDING" data-map-lng="PENDING" data-map-radius="800"></div>
+      </div>
+      <p class="map-note">Exact address shared with confirmed guests only.</p>
+    </div>
+  </section>
+
   <section class="section-cream" id="book" aria-labelledby="book-heading">
     <div class="container">
       <div class="section-heading">
@@ -166,10 +201,12 @@
       </div>
       <div class="widget-panel">
         <!-- HOSPITABLE WIDGET: rustic-retreat -->
-        <!-- Replace this placeholder div with Rustic Retreat's real Hospitable embed code once provided. -->
-        <div class="widget-placeholder" data-cabin="rustic-retreat">
-          Hospitable booking widget for Rustic Retreat goes here.
-        </div>
+        <script
+          src="https://cdn.hsptb.com/direct-booking-widget/widget-loader.prod.js"
+          data-site-uuid="a2ad2a0a-7aad-4594-83a1-02a804fbd3c7"
+          data-property-id="754564"
+          data-theme="multi">
+        </script>
         <p class="secure-note">&#128274; Secure checkout, handled directly through our booking platform</p>
       </div>
     </div>
@@ -219,6 +256,8 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="../js/nav.js"></script>
+<script src="../js/location-map.js"></script>
 </body>
 </html>
