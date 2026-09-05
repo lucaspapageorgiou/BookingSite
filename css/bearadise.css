@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Bearadise-specific styling.
+   Loaded only on cabins/bearadise.html, on top of css/base.css.
+   Photo treatment: warm ember/gold framing to match the cabin's honey-wood
+   interiors and amber deck lighting.
+   ========================================================================== */
+
+.page-bearadise h2 {
+  color: var(--bearadise-accent-deep);
+}
+
+.page-bearadise .eyebrow {
+  color: var(--bearadise-accent);
+}
+
+.page-bearadise .cabin-hero {
+  border-bottom: 6px solid var(--bearadise-accent);
+}
+
+.page-bearadise .gallery-grid img {
+  box-shadow: 0 6px 16px rgba(122, 52, 22, 0.18);
+  border: 1px solid var(--bearadise-accent-soft);
+}
+
+.page-bearadise .info-card {
+  border-top: 4px solid var(--bearadise-accent);
+}
+
+.page-bearadise .amenities-grid li::before {
+  content: "\2022";
+  color: var(--bearadise-accent);
+  font-weight: 700;
+}
+
+.page-bearadise .rules-grid li::before {
+  content: "\2022";
+  color: var(--bearadise-accent);
+  font-weight: 700;
+}
+
+.page-bearadise .widget-panel {
+  border-color: var(--bearadise-accent-soft);
+}
+
+.page-bearadise .secure-note {
+  color: var(--bearadise-accent-deep);
+}
+
+.page-bearadise .trust-row .stars {
+  color: var(--bearadise-gold);
+}
+
+.page-bearadise .link-list a {
+  color: var(--bearadise-accent-deep);
+}
+
+.page-bearadise .link-list a:hover,
+.page-bearadise .link-list a:focus-visible {
+  border-bottom-color: var(--bearadise-accent);
+}
