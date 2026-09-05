@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace https://REPLACE-WITH-LIVE-DOMAIN with the real domain once it's connected in Netlify. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://REPLACE-WITH-LIVE-DOMAIN/index.html</loc></url>
+  <url><loc>https://REPLACE-WITH-LIVE-DOMAIN/about.html</loc></url>
+  <url><loc>https://REPLACE-WITH-LIVE-DOMAIN/listings.html</loc></url>
+  <url><loc>https://REPLACE-WITH-LIVE-DOMAIN/cabins/bearadise.html</loc></url>
+  <url><loc>https://REPLACE-WITH-LIVE-DOMAIN/cabins/rustic-retreat.html</loc></url>
+  <url><loc>https://REPLACE-WITH-LIVE-DOMAIN/contact.html</loc></url>
+  <url><loc>https://REPLACE-WITH-LIVE-DOMAIN/faq.html</loc></url>
+  <url><loc>https://REPLACE-WITH-LIVE-DOMAIN/privacy.html</loc></url>
+  <url><loc>https://REPLACE-WITH-LIVE-DOMAIN/cancellation-policy.html</loc></url>
+</urlset>

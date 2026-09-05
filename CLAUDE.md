@@ -1,9 +1,10 @@
-# Direct Booking Site — Two Smoky Mountain Cabins
+# Stays of the Smokies — Two Smoky Mountain Cabins
 
-Static direct-booking website for two cabins in the Sevierville/Pigeon Forge/
-Gatlinburg area of Tennessee: **Bearadise** and **Rustic Retreat**. The owner
-has a stake in both (one owner in common between them, plus other
-co-owners per cabin), so the site can present them as one shared brand.
+Static direct-booking website, brand name **Stays of the Smokies**, for two
+cabins in Pigeon Forge, Tennessee: **Bearadise** and **Rustic Retreat**. The
+owner has a stake in both (one owner in common between them, plus other
+co-owners per cabin — see About page for the family story), so the site
+presents them as one shared brand.
 
 Goal: a warm, trustworthy site that converts visitors who currently book
 these same cabins on Airbnb, VRBO, and Booking.com into direct bookers, by
@@ -14,12 +15,33 @@ Full detailed build spec: `booking_site_brief_final.md` (repo root). Treat
 that file as the source of truth for exact page-by-page requirements; this
 file is the quick-reference summary for working sessions.
 
+## Location branding — read before touching copy
+
+Site copy describes both cabins as located in **Pigeon Forge** only, per
+explicit owner direction. Gatlinburg and Sevierville are mentioned only as
+nearby towns in area/attractions content (e.g. the Home page's area section,
+the About page), never as the cabins' own location. This is a deliberate
+marketing choice — the guest guides in `/reference` list the actual mailing
+addresses as Sevierville, TN, so there's a known divergence between the
+real mailing city and the public-facing brand story. LodgingBusiness schema
+on both cabin detail pages uses `addressLocality: "Pigeon Forge"` to match.
+If this ever needs to change, check with the owner rather than reverting
+unilaterally either direction.
+
 ## Status
 
-Planning stage — no site code written yet. Only reference material and
-photos are in the repo so far. Build order: Home page + Bearadise detail
-page first, commit and push so the owner can review live on Netlify before
-the rest is built.
+Full site built: Home, About, Listings, both cabin detail pages, Contact,
+FAQ, Privacy Policy, Cancellation Policy (placeholder), custom 404,
+sitemap.xml, favicon. Owner reviews and gives feedback from here.
+
+Remaining placeholders, not blockers, just waiting on real values:
+- Hospitable booking widget embed codes (one per cabin, clearly marked
+  `<!-- HOSPITABLE WIDGET: {cabin} -->` divs in each detail page)
+- Formspree form endpoint on Contact page (`YOUR_FORM_ID` placeholder)
+- Actual cancellation/refund policy text (placeholder section on both
+  cabin pages plus its own page)
+- Real domain for `sitemap.xml` and the schema `image` URLs
+  (`REPLACE-WITH-LIVE-DOMAIN` placeholders)
 
 ## Stack and hosting constraints
 
@@ -86,21 +108,42 @@ or clearly label the differing scales if shown side by side.
 Never publish either cabin's physical address anywhere on the public
 site (only shared with confirmed guests via Hospitable's guest portal).
 
-## Photos (`/Images`)
+## Photos (`/images`)
 
-Source folders are `Images/bearadise/` and `Images/rustic-retreat/`
-(renamed from the original "Bearadise" / "Rustic Retreat" with spaces and
-mixed case, for clean escape-free paths in HTML/CSS). Use these images
-directly; owner will review the live site and request rearranging as
-needed. Alt text must be specific and descriptive of actual image
-content, never generic.
+Folders are `images/bearadise/` and `images/rustic-retreat/` (renamed from
+the original "Images/Bearadise" / "Images/Rustic Retreat" with spaces and
+mixed case, for clean escape-free paths in HTML/CSS).
+
+**Working copies are resized for web** (max 2000px on the long edge, JPEG
+~78 quality; stray PNGs converted to JPEG) — originals were 30 to 50MB
+camera files, ~900MB total, unusable for a live site. Full-resolution
+originals are backed up outside the repo at
+`~/Desktop/Cabin Photos - Full Resolution Originals` — go there if a
+print-quality or full-res version of a photo is ever needed. Any new
+photos added later should get the same treatment before committing
+(`sips -Z 2000 -s format jpeg -s formatOptions 78 file.jpg --out file.jpg`).
+
+Alt text must be specific and descriptive of actual image content, never
+generic.
 
 ## File structure
 
-Separate CSS per cabin (own accent color and photo treatment) plus one
-shared base stylesheet for layout, typography, and shared components
-(header, footer, nav). Propose the exact file/folder layout before
-building it out, since none exists yet.
+```
+index.html, about.html, listings.html, contact.html, faq.html,
+privacy.html, cancellation-policy.html, 404.html, sitemap.xml, favicon.svg
+cabins/bearadise.html, cabins/rustic-retreat.html
+css/base.css        — shared layout, typography, header/nav/footer, buttons,
+                       carousel, trust rows, icon rows, FAQ accordion
+css/bearadise.css   — Bearadise accent (ember/gold) + photo treatment
+css/rustic-retreat.css — Rustic Retreat accent (slate blue) + photo treatment
+js/nav.js           — mobile nav toggle, shared across all pages
+js/carousel.js      — Home page hero carousel, vanilla JS, no libraries
+```
+
+Both cabins' accent color CSS variables live in `css/base.css` `:root`
+(`--bearadise-*`, `--rustic-*`) since they're reused sitewide on teaser
+cards; the per-cabin stylesheets only hold that cabin's own detail-page
+flourishes (gallery border treatment, heading color, etc.).
 
 ## SEO and structured data
 

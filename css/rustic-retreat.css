@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Rustic Retreat specific styling.
+   Loaded only on cabins/rustic-retreat.html, on top of css/base.css.
+   Photo treatment: cool slate blue framing to match the cabin's blue-gray
+   furnishings and chalet style glass and timber interior.
+   ========================================================================== */
+
+.page-rustic h2 {
+  color: var(--rustic-accent-deep);
+}
+
+.page-rustic .eyebrow {
+  color: var(--rustic-accent);
+}
+
+.page-rustic .cabin-hero {
+  border-bottom: 6px solid var(--rustic-accent);
+}
+
+.page-rustic .gallery-grid img {
+  box-shadow: 0 6px 16px rgba(43, 63, 71, 0.18);
+  border: 1px solid var(--rustic-accent-soft);
+}
+
+.page-rustic .info-card {
+  border-top: 4px solid var(--rustic-accent);
+}
+
+.page-rustic .amenities-grid li::before {
+  content: "\2022";
+  color: var(--rustic-accent);
+  font-weight: 700;
+}
+
+.page-rustic .rules-grid li::before {
+  content: "\2022";
+  color: var(--rustic-accent);
+  font-weight: 700;
+}
+
+.page-rustic .widget-panel {
+  border-color: var(--rustic-accent-soft);
+}
+
+.page-rustic .secure-note {
+  color: var(--rustic-accent-deep);
+}
+
+.page-rustic .trust-row .stars {
+  color: var(--rustic-accent);
+}
+
+.page-rustic .link-list a {
+  color: var(--rustic-accent-deep);
+}
+
+.page-rustic .link-list a:hover,
+.page-rustic .link-list a:focus-visible {
+  border-bottom-color: var(--rustic-accent);
+}
