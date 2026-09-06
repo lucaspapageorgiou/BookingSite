@@ -42,26 +42,34 @@ policy copy from the widget code.
 
 Each cabin detail page has a "Where You'll Be" section with a Leaflet
 (OpenStreetMap, no API key) map showing a shaded circle, not a pin, over
-the cabin's general area — this exists specifically so the real address
-never has to appear on the page while still giving guests a genuinely
-accurate sense of location. The circle's center coordinates must never be
-derived by sending the real street address (from `/reference`) to an
-external geocoding service — that's an explicit privacy line the owner
-asked to hold. Get coordinates only from the owner directly (they can look
-them up in Maps and hand back just the numbers), never by geocoding the
-address text. Until then, `data-map-lat`/`data-map-lng` are marked
-`PENDING` in both cabin pages.
+the cabin's general area (`data-map-lat`/`data-map-lng`, both now filled
+in with real coordinates, radius ~800m). This exists specifically so the
+real address never has to appear on the page while still giving guests a
+genuinely accurate sense of location. The circle's center coordinates must
+never be derived by sending the real street address (from `/reference`)
+to an external geocoding service — that's an explicit privacy line the
+owner asked to hold. Get coordinates only from the owner directly (they
+look them up in Maps and hand back just the numbers), never by geocoding
+the address text.
 
 Photo galleries on both cabin detail pages include every real photo of the
-cabin from `/images/{cabin}` — deliberately excluding the floor plan PDF
-(different asset type) and the handful of area attraction stock photos
-(Dollywood, GSMNP sign, Hatfields & McCoys, Roaring Fork, The Island,
-Wonderworks) that are duplicated identically across both cabins' folders —
-those depict the region, not the property, so including them in a cabin's
-own gallery would misrepresent what guests are booking.
+cabin from `/images/{cabin}`, plus the area attraction photos (Dollywood,
+GSMNP sign, Hatfields & McCoys, Roaring Fork, The Island, WonderWorks —
+duplicated identically across both cabins' folders) on the Home page's
+"The Area" section rather than in either cabin's own gallery, since those
+depict the region, not the property. Only the floor plan PDF is excluded
+site-wide (different asset type, not a photo).
+
+Gallery images are clickable (`js/lightbox.js`, shared across both cabin
+pages): opens a full-size overlay with prev/next arrows, a counter,
+Escape/click-outside to close, and focus returns to the thumbnail that
+opened it. It reads every `.gallery-grid img` on the page in DOM order, so
+**photo order on a cabin's listing is controlled entirely by the order of
+the `<img>` tags inside that page's `.gallery-grid` div** — reordering the
+gallery means reordering those lines in `cabins/bearadise.html` or
+`cabins/rustic-retreat.html`, nothing else to configure.
 
 Remaining placeholders, not blockers, just waiting on real values:
-- Map center coordinates per cabin (see above — ask the owner directly)
 - Formspree form endpoint on Contact page (`YOUR_FORM_ID` placeholder)
 - Actual cancellation/refund policy text (placeholder section on both
   cabin pages plus its own page) — must come from the owner's Hospitable
