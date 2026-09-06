@@ -728,6 +728,28 @@ section {
   box-shadow: var(--shadow-soft);
 }
 
+.detail-top-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.detail-top-grid .widget-panel {
+  position: sticky;
+  top: 90px;
+}
+
+@media (max-width: 780px) {
+  .detail-top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-top-grid .widget-panel {
+    position: static;
+  }
+}
+
 .widget-placeholder {
   background: var(--cream);
   border-radius: 10px;
