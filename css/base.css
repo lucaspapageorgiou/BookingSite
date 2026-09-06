@@ -443,17 +443,8 @@ section {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  border-top: 5px solid var(--line);
   display: flex;
   flex-direction: column;
-}
-
-.cabin-card.accent-bearadise {
-  border-top-color: var(--bearadise-accent);
-}
-
-.cabin-card.accent-rustic {
-  border-top-color: var(--rustic-accent);
 }
 
 .cabin-card img {
