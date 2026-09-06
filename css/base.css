@@ -177,6 +177,20 @@ section {
   box-shadow: var(--shadow-soft);
 }
 
+.site-header.header-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(20, 14, 10, 0.55) 0%, rgba(20, 14, 10, 0) 100%);
+  box-shadow: none;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.site-header.header-overlay.is-solid {
+  background: var(--forest);
+  box-shadow: var(--shadow-soft);
+}
+
 .site-header .container {
   display: flex;
   align-items: center;
@@ -862,6 +876,7 @@ section {
 }
 
 .room-item .room-photo {
+  position: relative;
   order: 2;
   aspect-ratio: 1 / 1;
   border-radius: 10px;
@@ -874,6 +889,32 @@ section {
   height: 100%;
   object-fit: cover;
   cursor: zoom-in;
+}
+
+.room-item .room-photo img:not(:first-of-type) {
+  display: none;
+}
+
+.room-item .room-photo .photo-count-badge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  z-index: 1;
+  background: rgba(46, 32, 24, 0.75);
+  color: #fbf6ea;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.room-item .room-photo .photo-count-badge::before {
+  content: "\1F5BC";
+  font-size: 0.8rem;
 }
 
 .room-item .room-text {
@@ -930,31 +971,6 @@ section {
   .room-item .room-text {
     order: 1;
   }
-}
-
-.gallery-section-heading {
-  margin: 2.5rem 0 1rem;
-}
-
-.section-jump-link {
-  font-size: 0.72rem;
-  font-weight: 600;
-  margin-left: 0.5rem;
-  white-space: nowrap;
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-}
-
-.page-bearadise .section-jump-link {
-  color: var(--bearadise-accent);
-}
-
-.page-rustic .section-jump-link {
-  color: var(--rustic-accent);
-}
-
-.gallery-section-heading:first-of-type {
-  margin-top: 1.5rem;
 }
 
 .widget-panel {

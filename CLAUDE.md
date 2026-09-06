@@ -41,9 +41,16 @@ from the owner's Hospitable dashboard directly, so don't infer or fabricate
 policy copy from the widget code.
 
 Each cabin detail page has a "Where You'll Be" section with a Leaflet
-(OpenStreetMap, no API key) map showing a shaded circle, not a pin, over
-the cabin's general area (`data-map-lat`/`data-map-lng`, both now filled
-in with real coordinates, radius ~800m). This exists specifically so the
+(OpenStreetMap via cdnjs, no API key) map showing a shaded circle, not a
+pin, over the cabin's general area (`data-map-lat`/`data-map-lng`, both
+filled in with real coordinates, radius 805m = 0.5 mile). `fitBounds` uses
+extra padding and a capped zoom (`maxZoom: 15`) so the circle doesn't
+fill the whole frame — showing surrounding context is what makes a fixed
+radius actually read as "precise" rather than just "big." If the map ever
+shows "Map could not load" again, don't guess at a fix blind — open it in
+a browser and read the console error (see `js/location-map.js`'s history:
+the tile subdomain deprecation and the missing `map.setView()` call were
+both found this way, not guessed). This exists specifically so the
 real address never has to appear on the page while still giving guests a
 genuinely accurate sense of location. The circle's center coordinates must
 never be derived by sending the real street address (from `/reference`)
@@ -52,32 +59,39 @@ owner asked to hold. Get coordinates only from the owner directly (they
 look them up in Maps and hand back just the numbers), never by geocoding
 the address text.
 
-Photo galleries on both cabin detail pages include every real photo of the
-cabin from `/images/{cabin}`, plus the area attraction photos (Dollywood,
-GSMNP sign, Hatfields & McCoys, Roaring Fork, The Island, WonderWorks —
-duplicated identically across both cabins' folders) on the Home page's
-"The Area" section rather than in either cabin's own gallery, since those
-depict the region, not the property. Only the floor plan PDF is excluded
-site-wide (different asset type, not a photo).
+There is no standalone photo gallery section anymore — it was deliberately
+merged away. Every real photo of each cabin (from `/images/{cabin}`) now
+lives inside "The Space," attached directly to the room it belongs to.
+Each `.room-item` has a `.room-photo` container holding every photo for
+that room (only the first `<img>` displays; the rest are inert in the DOM
+until opened). A `.photo-count-badge` ("N photos") only appears when a
+room has more than one, so it's visually obvious there's more to see.
+Area attraction photos (Dollywood, GSMNP sign, Hatfields & McCoys, Roaring
+Fork, The Island, WonderWorks — duplicated identically across both
+cabins' folders) live on the Home page's "The Area" section instead,
+since those depict the region, not the property. Only the floor plan PDF
+is excluded site-wide (different asset type, not a photo). Each cabin
+also has an "Exterior" room-item (no bullet list to speak of, just
+photos) so exterior shots that don't belong to any interior room still
+have a home.
 
-Gallery images are clickable (`js/lightbox.js`, shared across both cabin
-pages): opens a full-size overlay with prev/next arrows, the alt text as
-a caption, a counter, Escape/click-outside to close, and focus returns to
-the thumbnail that opened it. It reads every `.gallery-grid img` on the
-page in DOM order, spanning all sections as one continuous set — so
-**photo order on a cabin's listing is controlled entirely by the order of
-the `<img>` tags inside that page's `.gallery-grid` divs**, nothing else
-to configure.
+Photos are clickable (`js/lightbox.js`, shared across both cabin pages):
+each `.room-photo` container is read as its own independent group, so
+clicking into one room's photos only cycles through that room's photos
+(prev/next, arrow keys), not the whole page. Opens a full-size overlay
+with the alt text as a caption, a counter (hidden for single-photo
+rooms), Escape/click-outside to close, and focus returns to the
+thumbnail that opened it.
 
-Each cabin's gallery is broken into named sections (`<h3
-class="gallery-section-heading">` + its own `.gallery-grid` div, repeated
-per room) per the owner's requested groupings — e.g. Bearadise: Living
-Room/Dining Room/Kitchen, Master Bedroom & Ensuite, Loft Bedroom &
-Ensuite, Gameroom, Basement Bedroom, Top Deck, Bottom Deck with Hot Tub,
-Laundry, Exterior. Rustic Retreat has no laundry photo on hand, so that
-section is simply omitted there until one exists. Reordering within or
-across sections, or renaming/adding sections, means editing those
-headings and grids directly.
+**Photo order on a cabin's listing is controlled entirely by the order
+of the `<img>` tags inside that room's `.room-photo` div** (which photo
+shows as the visible thumbnail = whichever `<img>` is first), and **room
+order** is controlled by the order of `.room-item` blocks inside
+`.room-list`, nothing else to configure. Each room-item's level label
+("Main Level" / "Upper Level" / "Lower Level") is a `<span
+class="level-tag">`, kept deliberately separate from the room name so it
+reads as a small pill next to the heading rather than being baked into
+the heading text.
 
 Each cabin's **hero photo** (the big banner under the nav, and the same
 photo used for that cabin's teaser card on Home and Listings) is a
@@ -198,14 +212,25 @@ css/base.css        — shared layout, typography, header/nav/footer, buttons,
                        carousel, trust rows, icon rows, FAQ accordion
 css/bearadise.css   — Bearadise accent (ember/gold) + photo treatment
 css/rustic-retreat.css — Rustic Retreat accent (slate blue) + photo treatment
-js/nav.js           — mobile nav toggle, shared across all pages
+js/nav.js           — mobile nav toggle + header scroll behavior, all pages
 js/carousel.js      — Home page hero carousel, vanilla JS, no libraries
+js/lightbox.js      — per-room photo groups, both cabin pages
+js/location-map.js  — Leaflet "Where You'll Be" circle, both cabin pages
 ```
 
 Both cabins' accent color CSS variables live in `css/base.css` `:root`
 (`--bearadise-*`, `--rustic-*`) since they're reused sitewide on teaser
 cards; the per-cabin stylesheets only hold that cabin's own detail-page
-flourishes (gallery border treatment, heading color, etc.).
+flourishes (heading color, etc.).
+
+The header is transparent/overlaid (`.header-overlay` class, only on
+`index.html` and both cabin pages, since those are the only pages with a
+hero image directly underneath it) so the hero photo shows through at
+the top of the page. `js/nav.js` adds `.is-solid` once scrolled past
+60px, turning it into the normal solid forest-green bar for the rest of
+the page. Other pages (About, Listings, Contact, FAQ, etc.) keep the
+plain sticky solid header — there's no hero photo for a transparent one
+to reveal there.
 
 ## SEO and structured data
 

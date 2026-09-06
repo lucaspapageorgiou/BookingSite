@@ -1,12 +1,13 @@
 (function () {
   "use strict";
 
-  var galleryImgs = Array.prototype.slice.call(document.querySelectorAll(".gallery-grid img, .room-photo img"));
+  var groups = Array.prototype.slice.call(document.querySelectorAll(".room-photo"));
 
-  if (!galleryImgs.length) {
+  if (!groups.length) {
     return;
   }
 
+  var currentGroup = [];
   var current = 0;
   var lastFocused = null;
 
@@ -35,14 +36,18 @@
   var nextBtn = overlay.querySelector(".lightbox-next");
 
   function render() {
-    var source = galleryImgs[current];
+    var source = currentGroup[current];
     imgEl.src = source.currentSrc || source.src;
     imgEl.alt = source.alt;
     captionEl.textContent = source.alt;
-    counterEl.textContent = (current + 1) + " / " + galleryImgs.length;
+    counterEl.textContent = currentGroup.length > 1 ? (current + 1) + " / " + currentGroup.length : "";
+    var multi = currentGroup.length > 1;
+    prevBtn.hidden = !multi;
+    nextBtn.hidden = !multi;
   }
 
-  function open(index) {
+  function open(imgs, index) {
+    currentGroup = imgs;
     current = index;
     lastFocused = document.activeElement;
     render();
@@ -60,26 +65,33 @@
   }
 
   function next() {
-    current = (current + 1) % galleryImgs.length;
+    current = (current + 1) % currentGroup.length;
     render();
   }
 
   function prev() {
-    current = (current - 1 + galleryImgs.length) % galleryImgs.length;
+    current = (current - 1 + currentGroup.length) % currentGroup.length;
     render();
   }
 
-  galleryImgs.forEach(function (img, i) {
-    img.setAttribute("tabindex", "0");
-    img.setAttribute("role", "button");
-    img.setAttribute("aria-label", "View larger: " + img.alt);
-    img.addEventListener("click", function () {
-      open(i);
+  groups.forEach(function (group) {
+    var imgs = Array.prototype.slice.call(group.querySelectorAll("img"));
+    if (!imgs.length) {
+      return;
+    }
+    group.setAttribute("tabindex", "0");
+    group.setAttribute("role", "button");
+    group.setAttribute(
+      "aria-label",
+      imgs.length > 1 ? "View " + imgs.length + " photos: " + imgs[0].alt : "View larger: " + imgs[0].alt
+    );
+    group.addEventListener("click", function () {
+      open(imgs, 0);
     });
-    img.addEventListener("keydown", function (e) {
+    group.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        open(i);
+        open(imgs, 0);
       }
     });
   });

@@ -26,7 +26,7 @@
   containers.forEach(function (el) {
     var lat = parseFloat(el.getAttribute("data-map-lat"));
     var lng = parseFloat(el.getAttribute("data-map-lng"));
-    var radius = parseFloat(el.getAttribute("data-map-radius")) || 800;
+    var radius = parseFloat(el.getAttribute("data-map-radius")) || 805;
 
     if (isNaN(lat) || isNaN(lng)) {
       el.textContent = "Map location not set yet.";
@@ -57,7 +57,7 @@
         weight: 2
       }).addTo(map);
 
-      map.fitBounds(circle.getBounds(), { padding: [10, 10] });
+      map.fitBounds(circle.getBounds(), { padding: [40, 40], maxZoom: 15 });
 
       window.setTimeout(function () {
         map.invalidateSize();
