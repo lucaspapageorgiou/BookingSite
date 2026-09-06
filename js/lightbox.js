@@ -22,12 +22,14 @@
     '<figure class="lightbox-figure">' +
       '<img class="lightbox-img" alt="">' +
       '<figcaption class="lightbox-caption"></figcaption>' +
+      '<p class="lightbox-counter"></p>' +
     "</figure>" +
     '<button class="lightbox-arrow lightbox-next" type="button" aria-label="Next photo">&#8250;</button>';
   document.body.appendChild(overlay);
 
   var imgEl = overlay.querySelector(".lightbox-img");
   var captionEl = overlay.querySelector(".lightbox-caption");
+  var counterEl = overlay.querySelector(".lightbox-counter");
   var closeBtn = overlay.querySelector(".lightbox-close");
   var prevBtn = overlay.querySelector(".lightbox-prev");
   var nextBtn = overlay.querySelector(".lightbox-next");
@@ -36,7 +38,8 @@
     var source = galleryImgs[current];
     imgEl.src = source.currentSrc || source.src;
     imgEl.alt = source.alt;
-    captionEl.textContent = (current + 1) + " / " + galleryImgs.length;
+    captionEl.textContent = source.alt;
+    counterEl.textContent = (current + 1) + " / " + galleryImgs.length;
   }
 
   function open(index) {

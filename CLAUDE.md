@@ -61,13 +61,38 @@ depict the region, not the property. Only the floor plan PDF is excluded
 site-wide (different asset type, not a photo).
 
 Gallery images are clickable (`js/lightbox.js`, shared across both cabin
-pages): opens a full-size overlay with prev/next arrows, a counter,
-Escape/click-outside to close, and focus returns to the thumbnail that
-opened it. It reads every `.gallery-grid img` on the page in DOM order, so
+pages): opens a full-size overlay with prev/next arrows, the alt text as
+a caption, a counter, Escape/click-outside to close, and focus returns to
+the thumbnail that opened it. It reads every `.gallery-grid img` on the
+page in DOM order, spanning all sections as one continuous set — so
 **photo order on a cabin's listing is controlled entirely by the order of
-the `<img>` tags inside that page's `.gallery-grid` div** — reordering the
-gallery means reordering those lines in `cabins/bearadise.html` or
-`cabins/rustic-retreat.html`, nothing else to configure.
+the `<img>` tags inside that page's `.gallery-grid` divs**, nothing else
+to configure.
+
+Each cabin's gallery is broken into named sections (`<h3
+class="gallery-section-heading">` + its own `.gallery-grid` div, repeated
+per room) per the owner's requested groupings — e.g. Bearadise: Living
+Room/Dining Room/Kitchen, Master Bedroom & Ensuite, Loft Bedroom &
+Ensuite, Gameroom, Basement Bedroom, Top Deck, Bottom Deck with Hot Tub,
+Laundry, Exterior. Rustic Retreat has no laundry photo on hand, so that
+section is simply omitted there until one exists. Reordering within or
+across sections, or renaming/adding sections, means editing those
+headings and grids directly.
+
+Each cabin's **hero photo** (the big banner under the nav, and the same
+photo used for that cabin's teaser card on Home and Listings) is a
+specific choice, not just "whatever the first real photo was": Bearadise
+uses the twilight exterior (`ChatGPT Image May 3, 2026...jpg`), Rustic
+Retreat uses the twilight aerial (`winner.jpg`). Both are set in three
+places per cabin — the cabin's own `.cabin-hero`, `index.html`'s teaser
+card, and `listings.html`'s card — keep those three in sync if the hero
+ever changes again. The Home page's rotating carousel is separate from
+this and can keep whatever mix of photos it already has.
+
+The Hospitable widget is a black box past the loader script: things like
+showing taxes/fees inline (vs. only at the reserve step) are controlled
+in the owner's Hospitable dashboard settings, not in this site's code —
+don't invent undocumented `data-*` attributes hoping they do something.
 
 Remaining placeholders, not blockers, just waiting on real values:
 - Formspree form endpoint on Contact page (`YOUR_FORM_ID` placeholder)

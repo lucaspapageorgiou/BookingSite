@@ -305,8 +305,7 @@ section {
 .carousel-slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  background: var(--bark);
+  object-fit: cover;
 }
 
 .carousel-caption {
@@ -638,7 +637,6 @@ section {
 .cabin-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(46, 32, 24, 0.4) 0%, rgba(46, 32, 24, 0.5) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -653,6 +651,7 @@ section {
 .cabin-hero-overlay h1 {
   color: #fbf6ea;
   margin-bottom: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65), 0 1px 3px rgba(0, 0, 0, 0.85);
 }
 
 .cabin-hero-overlay .facts {
@@ -660,6 +659,7 @@ section {
   margin: 0;
   font-size: 1.05rem;
   letter-spacing: 0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65), 0 1px 3px rgba(0, 0, 0, 0.85);
 }
 
 .gallery-grid {
@@ -717,10 +717,18 @@ section {
 }
 
 .lightbox-caption {
-  color: #ebe4d3;
-  font-size: 0.85rem;
+  color: #fbf6ea;
+  font-size: 0.95rem;
   margin-top: 0.9rem;
-  letter-spacing: 0.04em;
+  max-width: 70ch;
+  text-align: center;
+}
+
+.lightbox-counter {
+  color: #d8d2c099;
+  font-size: 0.8rem;
+  margin: 0.35rem 0 0;
+  letter-spacing: 0.06em;
 }
 
 .lightbox-close {
@@ -810,6 +818,33 @@ section {
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 1.5rem;
+}
+
+.room-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.room-grid .info-card h3 {
+  margin-bottom: 0.6rem;
+}
+
+.room-grid .info-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.room-grid .info-card li {
+  margin-bottom: 0.3rem;
+}
+
+.gallery-section-heading {
+  margin: 2.5rem 0 1rem;
+}
+
+.gallery-section-heading:first-of-type {
+  margin-top: 1.5rem;
 }
 
 .widget-panel {
