@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var galleryImgs = Array.prototype.slice.call(document.querySelectorAll(".gallery-grid img"));
+  var galleryImgs = Array.prototype.slice.call(document.querySelectorAll(".gallery-grid img, .room-photo img"));
 
   if (!galleryImgs.length) {
     return;
