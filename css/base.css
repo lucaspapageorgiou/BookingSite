@@ -470,8 +470,9 @@ section {
 }
 
 .cabin-card img.is-full-photo {
-  height: auto;
-  object-fit: contain;
+  height: 230px;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .cabin-card-body {
