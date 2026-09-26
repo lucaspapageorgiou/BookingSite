@@ -81,7 +81,6 @@ section {
 }
 
 .eyebrow {
-  text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 0.72rem;
   font-weight: 600;
@@ -217,7 +216,6 @@ section {
 .brand-region {
   font-size: 0.7rem;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: #d8d2c0cc;
 }
 
