@@ -14,6 +14,8 @@
   "@context": "https://schema.org",
   "@type": "LodgingBusiness",
   "name": "Bearadise",
+  "url": "https://staysofthesmokies.com/cabins/bearadise.html",
+  "brand": { "@type": "Brand", "name": "Stays of the Smokies" },
   "description": "A family owned cabin in the Smoky Mountains sleeping up to 8 guests across 3 bedrooms and 3 bathrooms, with a private hot tub, primary suite jacuzzi, and a full game room with a pool table and wet bar.",
   "address": {
     "@type": "PostalAddress",
@@ -25,12 +27,29 @@
     "https://staysofthesmokies.com/images/bearadise/Exterior/ChatGPT%20Image%20May%203%2C%202026%20at%2006_09_44%20PM.jpg",
     "https://staysofthesmokies.com/images/bearadise/Bunk%20Bed%20Room/DSC_0922.jpg"
   ],
+  "containsPlace": {
+    "@type": "Accommodation",
+    "numberOfBedrooms": 3,
+    "numberOfBathroomsTotal": 3,
+    "occupancy": {
+      "@type": "QuantitativeValue",
+      "maxValue": 8
+    }
+  },
+  "checkinTime": "16:00",
+  "checkoutTime": "11:00",
   "petsAllowed": false,
+  "smokingAllowed": false,
   "amenityFeature": [
     { "@type": "LocationFeatureSpecification", "name": "Private hot tub", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Game room with pool table", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Free parking", "value": true }
+    { "@type": "LocationFeatureSpecification", "name": "Free parking", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Jacuzzi tub", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Wet bar", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Gas log fireplace", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Washer and dryer", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true }
   ]
 }
 </script>
