@@ -108,13 +108,21 @@ showing taxes/fees inline (vs. only at the reserve step) are controlled
 in the owner's Hospitable dashboard settings, not in this site's code —
 don't invent undocumented `data-*` attributes hoping they do something.
 
-Remaining placeholders, not blockers, just waiting on real values:
-- Formspree form endpoint on Contact page (`YOUR_FORM_ID` placeholder)
+Live domain is **https://staysofthesmokies.com** (Netlify). It's used in
+`sitemap.xml`, `robots.txt`, the schema `url`/`image` fields, and every
+page's Open Graph `og:url`/`og:image`. The owner is setting up Google
+Search Console; the sitemap gets submitted there once `main` is live
+with the real domain.
+
+There is no public contact email on the site. `bookings@staysofthesmokies.com`
+was mentioned but the owner hasn't confirmed that mailbox exists, so
+don't publish it until they do. The contact form (Formspree, real
+endpoint) is the only contact route.
+
+Remaining placeholder, not a blocker, just waiting on a real value:
 - Actual cancellation/refund policy text (placeholder section on both
   cabin pages plus its own page) — must come from the owner's Hospitable
   dashboard, not the widget embed code
-- Real domain for `sitemap.xml` and the schema `image` URLs
-  (`REPLACE-WITH-LIVE-DOMAIN` placeholders)
 
 ## Stack and hosting constraints
 
@@ -124,8 +132,8 @@ Remaining placeholders, not blockers, just waiting on real values:
   key) for the location map circle on cabin detail pages, since that needs
   real map tiles; don't add other external JS dependencies beyond that.
 - Netlify hosting, already connected, auto-deploys on push to `main`.
-- No backend. Contact form uses Formspree free tier (placeholder endpoint
-  until the owner sets up a dedicated business email).
+- No backend. Contact form uses Formspree free tier (real endpoint,
+  notifications go to the owner's Formspree account email).
 - Mobile-first — most guests will browse and book from phones.
 
 ## Property management system (PMS)
@@ -237,6 +245,31 @@ to reveal there.
 Every page needs a title and meta description. Cabin detail pages need
 `LodgingBusiness` schema markup. Also needed: `sitemap.xml`, favicon,
 custom 404 page matching site tone/design with a link back to Home.
+
+`404.html` uses root absolute paths (`/css/base.css`, `/index.html`)
+because Netlify serves it at whatever missing URL was requested, so
+relative paths would break at nested URLs like `/cabins/oldname`. Every
+other page keeps relative paths.
+
+Cabin page titles are keyword led, chosen by the owner, and must stay
+under about 60 characters so Google doesn't truncate them:
+- `Bearadise | 3 Bedroom Pigeon Forge Cabin, Hot Tub & Game Room`
+- `Rustic Retreat | Wooded 3 Bedroom Pigeon Forge Cabin, Hot Tub`
+Rustic Retreat "feels secluded but isn't" (owner's words), so never
+describe it as secluded in titles or copy.
+
+Every page except 404 has Open Graph tags plus
+`twitter:card = summary_large_image`, reusing that page's own title and
+meta description. Cabin pages preview with their own hero photo; every
+other page uses Rustic Retreat's `winner.jpg`. If a title, description
+or hero photo changes, update the matching `og:` tag too.
+
+Both cabins' `LodgingBusiness` schema carries `url`, `brand`, a
+`containsPlace` Accommodation (bedrooms, bathrooms, max guests),
+check in/out times, `petsAllowed`/`smokingAllowed`, and amenities that
+are already listed on the page. Deliberately left out: `aggregateRating`
+(Google disallows ratings copied from Airbnb/VRBO), `geo` coordinates
+(more precise than the map circle), and `priceRange` (no owner value).
 
 ## Future consideration
 
