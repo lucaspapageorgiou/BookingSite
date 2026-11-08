@@ -131,6 +131,11 @@ Remaining placeholder, not a blocker, just waiting on a real value:
   libraries there. The one exception is Leaflet (loaded via CDN, no API
   key) for the location map circle on cabin detail pages, since that needs
   real map tiles; don't add other external JS dependencies beyond that.
+- Google Analytics 4 (`G-NF62BS4Q3E`, owner approved) is loaded via the
+  standard gtag.js snippet in the `<head>` of every page, 404 included.
+  New pages need the same snippet. The Privacy Policy's "Cookies &
+  Analytics" section describes it; keep the two in sync. Bookings happen
+  inside the Hospitable widget, so GA4 may not see completed bookings.
 - Netlify hosting, already connected, auto-deploys on push to `main`.
 - No backend. Contact form uses Formspree free tier (real endpoint,
   notifications go to the owner's Formspree account email).
